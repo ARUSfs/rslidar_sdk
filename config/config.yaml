@@ -18,6 +18,12 @@ lidar:
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
                                    #False-- Use the system clock as the timestamp                        
       pcap_path: /home/robosense/lidar.pcap #The path of pcap file
+      split_frame_mode: 1	     # The way to split the LiDAR frames. Default value is 1
+                                   # 1 -- Split frame depending on the split_angle
+                                   # 2 -- Split frame depending on a fixed number of blocks
+                                   # 3 -- Split frame depending on num_blks_split 
+      split_angle: 0   
+      num_blks_split: 1
     ros:
       ros_frame_id: rslidar                           #Frame id of packet message and point cloud message
       ros_recv_packet_topic: /rslidar_packets          #Topic used to receive lidar packets from ROS
