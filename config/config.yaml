@@ -24,7 +24,7 @@ lidar:
                                    # 3 -- Split frame depending on num_blks_split 
       split_angle: 0   
       num_blks_split: 300
-      x: 1.5
+      x: 0
       y: 0
       z: 0
       roll: 0
