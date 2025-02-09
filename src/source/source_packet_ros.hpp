@@ -245,6 +245,7 @@ class SourcePacketRos : public SourceDriver
 public: 
 
   virtual void init(const YAML::Node& config);
+  virtual void spin();
 
   SourcePacketRos();
 
@@ -277,6 +278,11 @@ void SourcePacketRos::init(const YAML::Node& config)
   pkt_sub_ = node_ptr_->create_subscription<rslidar_msg::msg::RslidarPacket>(ros_recv_topic, 100, 
       std::bind(&SourcePacketRos::putPacket, this, std::placeholders::_1));
 } 
+
+void SourcePacketRos::spin()
+{
+  rclcpp::spin(node_ptr_);
+}
 
 void SourcePacketRos::putPacket(const rslidar_msg::msg::RslidarPacket::SharedPtr msg) const
 {

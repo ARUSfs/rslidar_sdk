@@ -83,6 +83,7 @@ public:
 
   virtual void init(const YAML::Node& config) {}
   virtual void start() {}
+  virtual void spin() {}
   virtual void stop() {}
   virtual void regPointCloudCallback(DestinationPointCloud::Ptr dst);
   virtual void regPacketCallback(DestinationPacket::Ptr dst);

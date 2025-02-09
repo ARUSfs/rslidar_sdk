@@ -3,7 +3,7 @@ common:
                                                         #1: packet message comes from online Lidar
                                                         #2: packet message comes from ROS or ROS2
                                                         #3: packet message comes from Pcap file
-  send_packet_ros: false                                #true: Send packets through ROS or ROS2(Used to record packet)
+  send_packet_ros: true                                #true: Send packets through ROS or ROS2(Used to record packet)
   send_point_cloud_ros: true                            #true: Send point cloud through ROS or ROS2
 lidar:
   - driver:
@@ -18,6 +18,18 @@ lidar:
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
                                    #False-- Use the system clock as the timestamp                        
       pcap_path: /home/robosense/lidar.pcap #The path of pcap file
+      split_frame_mode: 1	     # The way to split the LiDAR frames. Default value is 1
+                                   # 1 -- Split frame depending on the split_angle
+                                   # 2 -- Split frame depending on a fixed number of blocks
+                                   # 3 -- Split frame depending on num_blks_split 
+      split_angle: 0   
+      num_blks_split: 300
+      x: 0
+      y: 0
+      z: 0
+      roll: 0
+      pitch: 0
+      yaw: 0
     ros:
       ros_frame_id: rslidar                           #Frame id of packet message and point cloud message
       ros_recv_packet_topic: /rslidar_packets          #Topic used to receive lidar packets from ROS
