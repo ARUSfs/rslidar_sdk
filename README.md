@@ -2,10 +2,7 @@
 
  [中文介绍](README_CN.md) 
 
-## 0 ARUS
-Versión del sdk con nuestra configuración actual y arreglos menores. 
 
-Si da error de que no reconoce np.float, cambiar np.float por float en /opt/ros/noetic/lib/python3/dist-packages/ros_numpy/point_cloud2.py
 
 ## 1 Introduction
 
@@ -37,6 +34,7 @@ To integrate the Lidar driver into your own projects, please use the rs_driver.
 - RS-LiDAR-M3
 - RS-LiDAR-E1
 - RS-LiDAR-MX
+- RS-LiDAR-AIRY
 
 ### 1.2 Point Type Supported
 
@@ -53,7 +51,7 @@ Download the rslidar_sdk as below. Since it contains the submodule rs_driver, pl
 
 
 ```sh
-git clone git@github.com:ARUSfs/rslidar_sdk.git
+git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git
 cd rslidar_sdk
 git submodule init
 git submodule update
