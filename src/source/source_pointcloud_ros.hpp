@@ -269,6 +269,7 @@ inline sensor_msgs::msg::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, 
 
   if (send_by_rows)
   {
+    auto t0 = rs_msg.points[0].timestamp;
     for (size_t i = 0; i < rs_msg.height; i++)
     {
       for (size_t j = 0; j < rs_msg.width; j++)
@@ -287,7 +288,7 @@ inline sensor_msgs::msg::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, 
 
 #ifdef POINT_TYPE_XYZIRT
         *iter_ring_ = point.ring;
-        *iter_timestamp_ = point.timestamp;
+        *iter_timestamp_ = point.timestamp - t0;
 
         ++iter_ring_;
         ++iter_timestamp_;
@@ -297,6 +298,7 @@ inline sensor_msgs::msg::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, 
   }
   else
   {
+    auto t0 = rs_msg.points[0].timestamp;
     for (size_t i = 0; i < rs_msg.points.size(); i++)
     {
       const LidarPointCloudMsg::PointT& point = rs_msg.points[i];
@@ -313,7 +315,7 @@ inline sensor_msgs::msg::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, 
 
 #ifdef POINT_TYPE_XYZIRT
       *iter_ring_ = point.ring;
-      *iter_timestamp_ = point.timestamp;
+      *iter_timestamp_ = point.timestamp-t0;
 
       ++iter_ring_;
       ++iter_timestamp_;
