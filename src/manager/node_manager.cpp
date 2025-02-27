@@ -143,7 +143,6 @@ void NodeManager::start()
     if (iter != nullptr)
     {
       iter->start();
-      iter->spin();
     }
   }
 }
