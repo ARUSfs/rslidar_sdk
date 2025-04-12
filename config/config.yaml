@@ -36,7 +36,15 @@ lidar:
       wait_for_difop: true
  
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
-                                   #False-- Use the system clock as the timestamp                        
+                                   #False-- Use the system clock as the timestamp   
+
+      # Enable with: colcon build --cmake-args '-DENABLE_TRANSFORM=ON'
+      x: 0
+      y: 0
+      z: 0
+      roll: 0
+      pitch: 0
+      yaw: 0                     
 
     ros:
       ros_frame_id: rslidar                           #Frame id of packet message and point cloud message
